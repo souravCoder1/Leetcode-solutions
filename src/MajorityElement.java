@@ -25,7 +25,7 @@ public class MajorityElement {
      * This step is necessary as there might be no majority element.
      * @param arr
      */
-    private static void mooreVoting(int[] arr) {
+    private static int mooreVoting(int[] nums) {
         int count = 0, candidate = -1;
  
         // Finding majority candidate
