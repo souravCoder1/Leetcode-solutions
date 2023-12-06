@@ -11,12 +11,12 @@ import java.util.Map;
 public class SingleNumber {
     public static void main(String[] args) {
         int nums[] = new int []{11,2,11,2,4};
-        singleElement1(nums);
+        singleElement3(nums);
     }
 
     static void singleElement1(int nums[]) {
         boolean visited[] = new boolean[nums.length];
-        Arrays.fill(visited, false);
+        -Arrays.fill(visited, false);
 
         for (int i = 0; i < nums.length; i++) {
             int count = 1; // count of number of occurences
@@ -40,15 +40,28 @@ public class SingleNumber {
 
     static void singleElement2(int nums[]) {
         Map<Integer, Integer> hMap = new HashMap<>();
-        //if key in present in the array, then increment count
-        if (hMap.containsKey(nums[i])) {
-            int count = hMap.get(nums[i]) + 1;
-            hMap.put(nums[i], count);
-        } else {
-            hMap.put(nums[i], 1);
+        for (int i = 0; i< nums.length; i++) {
+            //if key in present in the array, then increment count
+            if (hMap.containsKey(nums[i])) {
+                int count = hMap.get(nums[i]) + 1;
+                hMap.put(nums[i], count);
+            } else {
+                hMap.put(nums[i], 1);
+            }
         }
     }
 
+    //assignment: solve this problem using the xor method (best solution)
+    //if you XOR similar element it is zero. otherwise it is 1.
+    static void singleElement3(int nums[]) {
+        //int missing = nums.length;
+        int result = 0;
+        for (int i = 0; i < nums.length; i++) {
+            //missing ^= i ^ nums[i];
+             result ^= nums[i];
+        }
+        System.out.println("Result:: "+result);
+        //return missing;
     }
 
 }
